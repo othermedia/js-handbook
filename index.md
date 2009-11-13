@@ -111,7 +111,7 @@ Ruby. To get them up and running on your system you'll need Ruby 1.8.6 or
 higher and Rubygems, the Ruby package manager. Once those are installed, you
 just need to run the following command to install the relevant dependencies:
 
-    sudo gem install hoe grit jake packr oyster sinatra rack
+    sudo gem install jake helium
 
 All of our internal libraries, including JS.Class and Ojay, are kept under
 version control with [Git][git]. You will need a recent version of Git
