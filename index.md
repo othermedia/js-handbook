@@ -23,10 +23,10 @@ development: Ajax, animation, DOM manipulation and event handling.
 ### JS.Class
 
 JS.Class facilitates object-oriented design in JavaScript. Its main use within
-the OTHER media is providing abstractions---primarily modules and classes, as
-seen in the Ruby programming language---that allow us to express common
-JavaScript design patterns in a structured and maintainable fashion. Many of
-our in-house libraries start with a line like this one:
+our code is providing abstractions---primarily modules and classes, as seen in
+the Ruby programming language---that allow us to express common JavaScript
+design patterns in a structured and maintainable fashion. Many of our in-house
+libraries start with a line like this one:
 
     var LibraryObject = new JS.Class({...
 
