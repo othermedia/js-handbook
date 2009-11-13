@@ -186,3 +186,71 @@ Deploying your library
 
 * Registering libraries with Helium
 * Using Helium-served files in client projects
+
+
+Best practices
+--------------
+
+Hard work should be done in libraries. If the code for an application component
+takes up more than a page, start looking for ways to turn it into a library.
+
+When operating on collections, methods like `forEach`, `map`, `filter` and
+`reduce` can make your code more comprehensible. Loops do not convey intention
+well; avoid them.
+
+
+### Testing
+
+All libraries should have tests, as should any application code beyond a
+certain level of complexity. Helium will set up a `test/` directory when you
+run `he create`; don't just leave it empty.
+
+
+### Performance
+
+Avoid premature optimisation. When creating a new piece of functionality, the
+most important thing is to write clear, expressive, correct code. You can make
+it fast tomorrow.
+
+Performance issues should be fixed at the library level wherever possible:
+application code should be lightweight and idiomatic. If you face a tradeoff
+between a little bit of speed and a lot of readability, make it readable.
+
+Optimisations should not be attempted on the basis of guesswork. Profile your
+code, and see where the bottlenecks are. [Firebug][firebug] and
+[Web Inspector][webinsp] both include profilers, and there are numerous others
+available.
+
+  [firebug]: http://getfirebug.com/
+  [webinsp]: http://trac.webkit.org/wiki/Web%20Inspector
+
+Be aware of what your code is doing. You should know when calling a method will
+run a DOM query or make an HTTP request. Closures can be used to improve
+callback performance. Here's a fairly standard event handler:
+
+    $('a.highlight').on('click', function() {
+        $('p.shiny').flash();
+    });
+
+Every time that function is executed, it has to re-query the DOM. That query
+could easily be cached:
+
+    var shiny = $('p.shiny');
+
+    $('a.highlight').on('click', function() {
+        shiny.flash();
+    });
+
+Certain kinds of query are much faster than others. All browsers keep a global
+lookup table of element `id`s, so accessing a DOM node via its `id` value will
+always be much faster than traversing the DOM tree.
+
+For example, suppose you want to access the main header of a page. You could
+get the first `h1` element on the page:
+
+    document.querySelectorAll('h1')[0]
+
+However, it would be better to give that element an `id` value in your HTML and
+then access it via that:
+
+    document.getElementById('page-title');
