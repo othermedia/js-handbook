@@ -157,6 +157,22 @@ This dependency data is used by our other JavaScript deployment tool,
 [panel]:  http://github.com/othermedia/panel
 
 
+### Extractions
+
+JavaScript libraries tend to begin their lives in client projects. After all,
+we don't write these things for no reason---they're created to address specific
+needs. However, as soon as something begins to be used for more than one
+project, it needs to be extracted into a separate library.
+
+
+### Writing the library
+
+* Generating a stub project with `he create`
+* Moving your existing code into the stub project
+* Making the code more general
+* Writing test cases
+
+
 ### Dependency management
 
 * JS.Packages
@@ -168,10 +184,5 @@ This dependency data is used by our other JavaScript deployment tool,
 Deploying your library
 ----------------------
 
-New JavaScript code lives in two places: in libraries, and in client
-projects---more commonly the latter. If you develop a new `FooBarWidget`,
-chances are it will start its life in the FooBar project.
-
-
-* Within a project
-* Putting libraries on Helium
+* Registering libraries with Helium
+* Using Helium-served files in client projects
