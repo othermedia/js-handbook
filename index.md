@@ -160,7 +160,7 @@ This dependency data is used by our other JavaScript deployment tool,
 ### Extractions
 
 JavaScript libraries tend to begin their lives in client projects. After all,
-we don't write these things for no reason---they're created to address specific
+we don't write these things for no reason: they're created to address specific
 needs. However, as soon as something begins to be used for more than one
 project, it needs to be extracted into a separate library.
 
