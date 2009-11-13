@@ -1,2 +1,4 @@
 pygments: true
 markdown: rdiscount
+rdiscount:
+  smart: true
