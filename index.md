@@ -224,6 +224,10 @@ available.
   [firebug]: http://getfirebug.com/
   [webinsp]: http://trac.webkit.org/wiki/Web%20Inspector
 
+However, certain general principles will always apply. This one is paramount:
+
+> Don't make it until you need it.
+
 Be aware of what your code is doing. You should know when calling a method will
 run a DOM query or make an HTTP request. Closures can be used to improve
 callback performance. Here's a fairly standard event handler:
