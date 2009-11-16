@@ -248,11 +248,21 @@ always be much faster than traversing the DOM tree.
 For example, suppose you want to access the main header of a page. You could
 get the first `h1` element on the page:
 
+    // Vanilla DOM code
     document.querySelectorAll('h1')[0]
+    
+    // Ojay code
+    Ojay('#h1').at(0)
 
 However, it would be better to give that element an `id` value in your HTML and
 then access it via that:
 
+    // Vanilla DOM code
     document.getElementById('page-title');
+    
+    // Ojay code
+    Ojay.byId('page-title')
 
-This will be an order of magnitude faster.
+This will be an order of magnitude faster. Ojay's `byId` function simply wraps
+`getElementById`, and thus takes advantage of the same browser implementation
+details to guarantee a speed boost.
