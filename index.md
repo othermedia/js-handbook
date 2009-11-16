@@ -254,3 +254,5 @@ However, it would be better to give that element an `id` value in your HTML and
 then access it via that:
 
     document.getElementById('page-title');
+
+This will be an order of magnitude faster.
