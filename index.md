@@ -23,8 +23,8 @@ development: Ajax, animation, DOM manipulation and event handling.
 ### JS.Class
 
 JS.Class facilitates object-oriented design in JavaScript. Its main use within
-our code is providing abstractions---primarily modules and classes, as seen in
-the Ruby programming language---that allow us to express common JavaScript
+our code is providing abstractions--primarily modules and classes, as seen in
+the Ruby programming language--that allow us to express common JavaScript
 design patterns in a structured and maintainable fashion. Many of our in-house
 libraries start with a line like this one:
 
@@ -145,7 +145,7 @@ have a Jake config file, `jake.yml`.
 
 These config files also specify the JavaScript objects that the library
 provides, and which other objects they rely on. For example, the [Panel][panel]
-library provides three objects---`panel`, `Panel` and `PanelOverlay`---and
+library provides three objects--`panel`, `Panel` and `PanelOverlay`--and
 depends on four: `JS.Class`, `Ojay`, `Ojay.HTML` and `Ojay.ContentOverlay`.
 
 This dependency data is used by our other JavaScript deployment tool,
@@ -288,7 +288,7 @@ handler, and then the images are looped over again. Each thumbnail only
 corresponds to one image, so only one loop should be required.
 
 Worse, all the images are requested as soon as the code is run. They might as
-well just be added in the HTML document---at least then there wouldn't be the
+well just be added in the HTML document--at least then there wouldn't be the
 overhead of creating new DOM elements. This is not just a question of reducing
 load times: it can also cause race conditions. Because an image might take a
 while to load, if you click its corresponding thumbnail while it's still
