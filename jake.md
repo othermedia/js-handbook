@@ -38,6 +38,7 @@ To begin with, create a file called `jake.yml` in the root directory
 of your project; you will run the `jake` command from here. A basic config
 looks like this:
 
+    ---
     source_directory:     source
     build_directory:      build
   
