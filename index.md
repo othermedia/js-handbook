@@ -167,6 +167,13 @@ project, it needs to be extracted into a separate library.
 
 ### Writing the library
 
+The first step in writing a new library is to generate a stub project with the
+Helium command line tool. Just run the `he create` command:
+
+    he create my-library
+
+Obviously `my-library` should be the name of the library you're writing.
+
 * Generating a stub project with `he create`
 * Moving your existing code into the stub project
 * Making the code more general
