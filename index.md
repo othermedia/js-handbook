@@ -372,7 +372,7 @@ get the first `h1` element on the page:
     document.querySelectorAll('h1')[0]
     
     // Ojay code
-    Ojay('#h1').at(0)
+    Ojay('h1').at(0)
 
 However, it would be better to give that element an `id` value in your HTML and
 then access it via that:
