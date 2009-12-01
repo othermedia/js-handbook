@@ -3,6 +3,9 @@ layout: default
 title: Working Around Internet Explorer
 ---
 
+`onload` events for cached images
+---------------------------------
+
 In Internet Explorer, the `onload` event for cached images fires as soon as the
 `src` attribute of the image is set. This means code that works by injecting
 images into the page may work the first time that an image is loaded, but not
