@@ -31,7 +31,7 @@ in this style: create the image, add the event handler, and only then set the
     });
     
     image.set({
-      src: '/hiroshige-sushi.jpg'
+        src: '/hiroshige-sushi.jpg'
     });
 
 It's not as elegant, but it has the advantage of actually working.
