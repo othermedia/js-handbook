@@ -1,6 +1,6 @@
 ---
 layout: default
-title: JavaScript Development
+title: JavaScript Development Handbook
 ---
 
 The purpose of this document is to provide an overview of JavaScript
