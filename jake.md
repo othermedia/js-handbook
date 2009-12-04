@@ -1,7 +1,10 @@
 ---
-layout: default
-title: Jake Documentation
+layout:   article
+title:    Jake documentation
+previous: best-practices
+next:     helium
 ---
+
 
 Adapted from James Coglan's [Jake `README`][readme].
 

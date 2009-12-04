@@ -1,7 +1,10 @@
 ---
-layout: default
-title: JavaScript Toolchain Quick Install Guide
+layout:   article
+title:    JavaScript Toolchain Quick Install Guide
+previous: /
+next:     libraries
 ---
+
 
 This guide assumes that the `git`, `ruby` and `gem` binaries are already
 installed.

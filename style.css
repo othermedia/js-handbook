@@ -1,3 +1,10 @@
+.clear:after {content:"."; display:block; height:0; clear:both; visibility:hidden;}
+.clear {display:inline-block;}
+/* Hides from IE-mac \*/
+* html .clear {height:1%;}
+.clear {display:block;}
+/* End hide from IE-mac */
+
 html, body {margin:0; border:none; padding:0; background:#fafafa; font-family:Helvetica, Arial, sans-serif; font-size:14px; color:#404040; line-height:1.5;}
 #wrapper {width:60em; margin:0 auto 30px auto; border:1px solid #e5e5e5; border-top:none; padding:1.5em; background:#fff;}
 
@@ -11,8 +18,19 @@ pre {margin:20px; border:1px solid #f2f2f2; padding:9px; background:#fafafa;}
 code {font-family:Courier, 'Courier New', monospace; font-size:inherit;}
 blockquote {margin:0 30px 15px; font-style:italic;}
 
-#nav {margin-bottom:20px; border-bottom:1px solid #f2f2f2; padding:7px 0; font-size:12px;}
-#nav ul {margin:0; padding:0; text-align:center;}
-#nav li {display:inline; margin:0 10px; padding:0; list-style:none;}
-#nav li a {text-decoration:none;}
-#nav li a:hover {text-decoration:underline;}
+#header {position:relative;}
+
+#nav {margin:0; border-bottom:1px solid #f2f2f2; padding:7px 0; font-size:12px;}
+#nav .previous {float:left;}
+#nav .next {float:right;}
+#nav a {text-decoration:none;}
+#nav a:hover {text-decoration:underline;}
+
+#content {margin-top:20px;}
+
+#footer {margin-top:30px; border-top:1px solid #f2f2f2; padding-top:1em; font-size:12px;}
+#footer p {margin:0;}
+#footer a {text-decoration:none;}
+#footer a:hover {text-decoration:underline;}
+#footer #home-link {float:left;}
+#footer #copyright {float:right;}

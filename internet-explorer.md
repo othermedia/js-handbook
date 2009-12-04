@@ -1,7 +1,10 @@
 ---
-layout: default
-title: Working Around Internet Explorer
+layout:   article
+title:    Working around Internet Explorer
+previous: helium
+next:     /
 ---
+
 
 `onload` events for cached images
 ---------------------------------

@@ -1,7 +1,10 @@
 ---
-layout: default
-title: Helium Documentation
+layout:   article
+title:    Helium documentation
+previous: jake
+next:     internet-explorer
 ---
+
 
 Adapted from James Coglan's [Helium `README`][readme].
 
