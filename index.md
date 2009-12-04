@@ -11,3 +11,6 @@ questions, please [email Benedict][email].
 
   [tom]:   http://othermedia.com/
   [email]: mailto:benedict.eastaugh@othermedia.com
+
+This handbook is under active development. Its contents, and the advice it
+offers, may change at any time.
