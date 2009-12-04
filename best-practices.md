@@ -56,52 +56,55 @@ This applies very broadly, but a specific example will make it clearer. Suppose
 you are creating an image gallery from a list of thumbnails, each of which link
 to a larger version:
 
-    <div id="gallery">
+{% highlight html %}
+<div id="gallery">
+    <ul class="thumbnails">
+        <li><a href="image-1.jpg">
+            <img src="thumbnail-1.jpg" alt="">
+        </a></li>
         
-        <ul class="thumbnails">
-            <li><a href="image-1.jpg">
-                <img src="thumbnail-1.jpg" alt="">
-            </a></li>
-            
-            <li><a href="image-2.jpg">
-                <img src="thumbnail-2.jpg" alt="">
-            </a></li>
-            
-            <li><a href="image-3.jpg">
-                <img src="thumbnail-3.jpg" alt="">
-            </a></li>
-        </ul>
-    </div>
+        <li><a href="image-2.jpg">
+            <img src="thumbnail-2.jpg" alt="">
+        </a></li>
+        
+        <li><a href="image-3.jpg">
+            <img src="thumbnail-3.jpg" alt="">
+        </a></li>
+    </ul>
+</div>
+{% endhighlight %}
 
 The obvious way to implement this is to override the `onclick` event on each
 thumbnail link, and create a new image element, linking to the full-size image
 which corresponds to that that thumbnail.
+
+{% highlight javascript %}
+var container = Ojay('#gallery'),
+    images    = [];
+
+container.children('a').forEach(function(link, index) {
+    images[index]     = new Image();
+    images[index].src = link.node.href;
     
-    var container = Ojay('#gallery'),
-        images    = [];
+    container.insert(image);
     
-    container.children('a').forEach(function(link, index) {
-        images[index]     = new Image();
-        images[index].src = link.node.href;
+    link.on('click', function(el, evnt) {
+        evnt.stopDefault();
         
-        container.insert(image);
-        
-        link.on('click', function(el, evnt) {
-            evnt.stopDefault();
-            
-            images.forEach(function(image) {
-              Ojay(image).hide();
-            });
-            
-            Ojay(images[index]).show();
+        images.forEach(function(image) {
+          Ojay(image).hide();
         });
+        
+        Ojay(images[index]).show();
     });
-    
-    images.forEach(function(image), function() {
-        Ojay(image).hide();
-    });
-    
-    Ojay(images[0]).show();
+});
+
+images.forEach(function(image), function() {
+    Ojay(image).hide();
+});
+
+Ojay(images[0]).show();
+{% endhighlight %}
 
 There are a number of problems with this code. To begin with, it's repetitious:
 the links are looped over, then the images are looped over in the event
@@ -127,33 +130,35 @@ means the code will not be easily folded into a larger structure. Code changes
 over time, so if you structure things well at one point, it will be easier to
 change later, when requirements change.
 
-    var container = Ojay('#gallery'),
-        images    = [],
-        current   = 0;
+{% highlight javascript %}
+var container = Ojay('#gallery'),
+    images    = [],
+    current   = 0;
+
+container.children('a').forEach(function(thumbnail, index) {
+    var showImage = function() {
+        images[current].hide()._(images[index]).show();
+        current = index;
+    };
     
-    container.children('a').forEach(function(thumbnail, index) {
-        var showImage = function() {
-            images[current].hide()._(images[index]).show();
-            current = index;
-        };
+    thumbnail.on('click', function(el, evnt) {
+        evnt.stopDefault();
         
-        thumbnail.on('click', function(el, evnt) {
-            evnt.stopDefault();
-            
-            if (index == current) return;
-            
-            if (images[index]) {
-                showImage();
-            } else {
-                var img       = Ojay(new Image());
-                img.node.src  = thumbnail.node.href;
-                images[index] = img;
-                img.on('load', showImage);
-            }
-        });
+        if (index == current) return;
+        
+        if (images[index]) {
+            showImage();
+        } else {
+            var img       = Ojay(new Image());
+            img.node.src  = thumbnail.node.href;
+            images[index] = img;
+            img.on('load', showImage);
+        }
     });
-    
-    images[0].show();
+});
+
+images[0].show();
+{% endhighlight %}
 
 
 ### Understand the consequences
@@ -162,18 +167,22 @@ Be aware of what your code is doing. You should know when calling a method will
 run a DOM query or make an HTTP request. Closures can be used to improve
 callback performance. Here's a fairly standard event handler:
 
-    $('a.highlight').on('click', function() {
-        $('p.shiny').flash();
-    });
+{% highlight javascript %}
+$('a.highlight').on('click', function() {
+    $('p.shiny').flash();
+});
+{% endhighlight %}
 
 Every time that function is executed, it has to re-query the DOM. That query
 could easily be cached:
 
-    var shiny = $('p.shiny');
+{% highlight javascript %}
+var shiny = $('p.shiny');
 
-    $('a.highlight').on('click', function() {
-        shiny.flash();
-    });
+$('a.highlight').on('click', function() {
+    shiny.flash();
+});
+{% endhighlight %}
 
 Certain kinds of query are much faster than others. All browsers keep a global
 lookup table of element `id`s, so accessing a DOM node via its `id` value will
@@ -182,20 +191,24 @@ always be much faster than traversing the DOM tree.
 For example, suppose you want to access the main header of a page. You could
 get the first `h1` element on the page:
 
-    // Vanilla DOM code
-    document.querySelectorAll('h1')[0]
-    
-    // Ojay code
-    Ojay('h1').at(0)
+{% highlight javascript %}
+// Vanilla DOM code
+document.querySelectorAll('h1')[0]
+
+// Ojay code
+Ojay('h1').at(0)
+{% endhighlight %}
 
 However, it would be better to give that element an `id` value in your HTML and
 then access it via that:
 
-    // Vanilla DOM code
-    document.getElementById('page-title');
-    
-    // Ojay code
-    Ojay.byId('page-title')
+{% highlight javascript %}
+// Vanilla DOM code
+document.getElementById('page-title');
+
+// Ojay code
+Ojay.byId('page-title')
+{% endhighlight %}
 
 This will be an order of magnitude faster. Ojay's `byId` function simply wraps
 `getElementById`, and thus takes advantage of the same browser implementation
