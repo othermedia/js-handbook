@@ -6,7 +6,8 @@ next:     deployment
 ---
 
 
-### Our toolchain
+Our toolchain
+-------------
 
 Much of our JavaScript development toolchain consists of utilities written in
 Ruby. To get them up and running on your system you'll need Ruby 1.8.6 or
@@ -37,7 +38,8 @@ on GitHub.
 [ghtom]:  http://github.com/othermedia
 
 
-### Build tools
+Build tools
+-----------
 
 [Jake][jake] is a command line tool for building JavaScript packages from
 source code. Using YAML config files, you can specify any number of build files
@@ -59,7 +61,8 @@ This dependency data is used by our other JavaScript deployment tool,
 [panel]:  http://github.com/othermedia/panel
 
 
-### Extractions
+Extractions
+-----------
 
 JavaScript libraries tend to begin their lives in client projects. After all,
 we don't write these things for no reason: they're created to address specific
@@ -67,7 +70,8 @@ needs. However, as soon as something begins to be used for more than one
 project, it needs to be extracted into a separate library.
 
 
-### Writing the library
+Writing the library
+-------------------
 
 The first step in writing a new library is to generate a stub project with the
 Helium command line tool. Just run the `he create` command:
@@ -82,7 +86,8 @@ Obviously `my-library` should be the name of the library you're writing.
 * Writing test cases
 
 
-### Dependency management
+Dependency management
+---------------------
 
 * JS.Packages
 * Writing manifests
