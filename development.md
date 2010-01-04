@@ -35,7 +35,6 @@ on GitHub.
 [git]:    http://git-scm.com/
 [github]: http://github.com/
 [ghhelp]: http://help.github.com/
-[ghtom]:  http://github.com/othermedia
 
 
 Build tools

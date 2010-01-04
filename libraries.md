@@ -86,6 +86,7 @@ enter geographic data into web forms.
 [yui]:       http://developer.yahoo.com/yui/
 [jsclass]:   http://jsclass.jcoglan.com/
 [ojay]:      http://ojay.othermedia.org/
+[ghtom]:     http://github.com/othermedia
 [swfobject]: http://code.google.com/p/swfobject/
 [swfupload]: http://swfupload.org/
 [ytplayer]:  http://github.com/othermedia/youtube-player
