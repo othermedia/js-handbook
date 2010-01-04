@@ -83,13 +83,13 @@ items in an HTML document, while LocationPicker is a utility to help people
 enter geographic data into web forms.
 
 
-[yui]:       http://developer.yahoo.com/yui/
-[jsclass]:   http://jsclass.jcoglan.com/
-[ojay]:      http://ojay.othermedia.org/
-[ghtom]:     http://github.com/othermedia
-[swfobject]: http://code.google.com/p/swfobject/
-[swfupload]: http://swfupload.org/
-[ytplayer]:  http://github.com/othermedia/youtube-player
-[multi]:     http://github.com/othermedia/multi-upload
-[locpic]:    http://github.com/othermedia/location-picker
-[mapnav]:    http://github.com/othermedia/map-navigation
+  [yui]:       http://developer.yahoo.com/yui/
+  [jsclass]:   http://jsclass.jcoglan.com/
+  [ojay]:      http://ojay.othermedia.org/
+  [ghtom]:     http://github.com/othermedia
+  [swfobject]: http://code.google.com/p/swfobject/
+  [swfupload]: http://swfupload.org/
+  [ytplayer]:  http://github.com/othermedia/youtube-player
+  [multi]:     http://github.com/othermedia/multi-upload
+  [locpic]:    http://github.com/othermedia/location-picker
+  [mapnav]:    http://github.com/othermedia/map-navigation
