@@ -144,7 +144,7 @@ container.children('a').forEach(function(thumbnail, index) {
     thumbnail.on('click', function(el, evnt) {
         evnt.stopDefault();
         
-        if (index == current) return;
+        if (index === current) return;
         
         if (images[index]) {
             showImage();
