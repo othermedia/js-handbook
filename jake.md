@@ -1,7 +1,7 @@
 ---
 layout:   article
 title:    Jake documentation
-previous: best-practices
+previous: functional-programming
 next:     helium
 ---
 

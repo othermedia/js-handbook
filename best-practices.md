@@ -2,7 +2,7 @@
 layout:   article
 title:    Best practices
 previous: deployment
-next:     jake
+next:     functional-programming
 ---
 
 
