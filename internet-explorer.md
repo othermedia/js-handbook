@@ -6,6 +6,13 @@ next:     /
 ---
 
 
+Generally speaking, cross-browser compatibility issues should be resolved at
+the library level, rather than left for application developers to deal with.
+However, certain problems are hard to solve generically, so this appendix
+addresses some common Internet Explorer problems which developers need to be
+aware of.
+
+
 `onload` events for cached images
 ---------------------------------
 
