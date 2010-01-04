@@ -1,13 +1,13 @@
 ---
 layout:   article
-title:    JavaScript Toolchain Quick Install Guide
+title:    Quick install guide
 previous: /
 next:     libraries
 ---
 
 
-This guide assumes that the `git`, `ruby` and `gem` binaries are already
-installed.
+This quick install guide for our JavaScript toolchain assumes that the `git`,
+`ruby` and `gem` binaries are already installed.
 
     sudo gem update --system
     sudo gem install gemcutter
