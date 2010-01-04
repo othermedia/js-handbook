@@ -20,7 +20,10 @@ ol {list-style:decimal;}
 li {margin:5px 0;}
 pre {margin:20px 0; border:1px solid #f2f2f2; padding:9px 15px; background:#fafafa;}
 code {font-family:Courier, 'Courier New', monospace; font-size:inherit;}
-blockquote {margin:0 30px 15px; font-style:italic;}
+sup {vertical-align:super;}
+sub {vertical-align:sub;}
+blockquote {margin:0 30px 15px; font-style:italic; font-family:'Times New Roman', Times, serif; font-size:18px;}
+blockquote sub, blockquote sup {font-size:14px;}
 
 #header {position:relative;}
 
