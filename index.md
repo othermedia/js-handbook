@@ -1,6 +1,6 @@
 ---
 layout: home
-title:  JavaScript development handbook
+title:  The JavaScripter&#8217;s Handbook
 ---
 
 
