@@ -82,6 +82,36 @@ JavaScript libraries tend to begin their lives in client projects. After all,
 we don't write these things for no reason: they're created to address specific
 needs. However, as soon as something begins to be used for more than one
 project, it needs to be extracted into a separate library.
+[YouTube Player][ytp] and [Panel][panel] both started out within particular
+projects, but proved sufficiently useful and widely applicable that they were
+extracted into generic libraries.
+
+There are several advantages to this way of doing things. Firstly, no code is
+ever written just because it might turn out to be useful: it is created to
+solve a specific problem at a specific point in time, and even if it turns out
+not to be generally useful, it will still have served its purpose.
+
+Secondly, extractions are proven: they have been shown to work in real-world
+situations. There are two aspects to this. Firstly, they solve the problem they
+were intended to; secondly, their correctness and reliability are known
+quantities.
+
+Lastly, and perhaps most importantly, extractions offer one the possibility of
+improving on one's initial efforts. Application code is often written in too
+much of a hurry; "After all," thinks the programmer, "it will never appear
+outside this site, so all it needs to do is _work_---I don't need to spend days
+ensuring it's interoperable and has a good API."
+
+When extracting a library, one shouldn't be afraid of changing the API. After
+all, the intention is that the extracted code will be used in many places, not
+just one, so care must be taken to ensure that it will be easy to use and
+provide the features required. Fred Brooks suggested "write one to throw away",
+and the extraction process provides this: there are often important lessons to
+be learned from the mistakes and limitations of the first version. Discovering
+and solving these problems is a proven route to good library design.
+
+
+  [ytp]:   http://github.com/othermedia/youtube-player
 
 
 Writing the library
