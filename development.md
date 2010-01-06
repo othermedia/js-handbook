@@ -32,9 +32,9 @@ commit changes locally, without needing to have commit rights to the version
 on GitHub.
 
 
-[git]:    http://git-scm.com/
-[github]: http://github.com/
-[ghhelp]: http://help.github.com/
+  [git]:    http://git-scm.com/
+  [github]: http://github.com/
+  [ghhelp]: http://help.github.com/
 
 
 Build tools
@@ -51,13 +51,28 @@ provides, and which other objects they rely on. For example, the [Panel][panel]
 library provides three objects--`panel`, `Panel` and `PanelOverlay`--and
 depends on four: `JS.Class`, `Ojay`, `Ojay.HTML` and `Ojay.ContentOverlay`.
 
+The YAML code is very simple, and as we shall see, a skeleton `jake.yml` file
+can be generated when starting work on a new library.
+
+{% highlight yaml %}
+provides:
+  - panel
+  - Panel
+  - PanelOverlay
+requires:
+  - JS.Class
+  - Ojay
+  - Ojay.HTML
+  - Ojay.ContentOverlay
+{% endhighlight %}
+
 This dependency data is used by our other JavaScript deployment tool,
 [Helium][helium].
 
 
-[jake]:   http://github.com/jcoglan/jake
-[helium]: http://github.com/othermedia/helium
-[panel]:  http://github.com/othermedia/panel
+  [jake]:   http://github.com/jcoglan/jake
+  [helium]: http://github.com/othermedia/helium
+  [panel]:  http://github.com/othermedia/panel
 
 
 Extractions
