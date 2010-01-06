@@ -45,7 +45,7 @@ it again it will remove Gemcutter from your gem sources, so don't.
 
     sudo gem install jake helium thin
 
-This is the command we've been building up to--the point of the whole process.
+This is the command we've been building up to---the point of the whole process.
 It installs [Jake][jake], [Helium][helium] and [Thin][thin].
 
 **Jake** is a JavaScript build tool; it's our equivalent of [Make][make] or
