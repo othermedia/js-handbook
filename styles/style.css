@@ -27,15 +27,16 @@ blockquote sub, blockquote sup {font-size:14px;}
 
 #header {position:relative;}
 
-#nav {margin:0; border-bottom:1px solid #f2f2f2; padding:7px 0; font-size:12px;}
-#nav .previous {float:left;}
-#nav .next {float:right;}
-#nav a {text-decoration:none;}
-#nav a:hover {text-decoration:underline;}
+.nav {margin:0; border-width:1px 0 0 0; border-style:solid; border-color:#f2f2f2; padding:7px 0; font-size:12px;}
+.nav .previous {float:left;}
+.nav .next {float:right;}
+.nav a {text-decoration:none;}
+.nav a:hover {text-decoration:underline;}
+#header .nav {border-width:0 0 1px 0;}
 
-#content {margin-top:20px;}
+#content {margin:20px 0 30px 0;}
 
-#footer {margin-top:30px; border-top:1px solid #f2f2f2; padding-top:1em; font-size:12px;}
+#footer {border-top:1px solid #f2f2f2; padding-top:1em; font-size:12px;}
 #footer p {margin:0;}
 #footer a {text-decoration:none;}
 #footer a:hover {text-decoration:underline;}

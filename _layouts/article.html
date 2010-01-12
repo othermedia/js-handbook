@@ -5,29 +5,15 @@
     
     <div id="header">
         <h1>{{ page.title }}</h1>
-    </div>
-    
-    <p id="nav" class="clear">
-        {% if page.previous %}
-            {% if page.previous == "/" %}
-                <a class="previous" href="/">&lsaquo; Previous</a>
-            {% else %}
-                <a class="previous" href="/{{ page.previous }}.html">&lsaquo; Previous</a>
-            {% endif %}
-        {% endif %}
         
-        {% if page.next %}
-            {% if page.next == "/" %}
-                <a class="next" href="/">Next &rsaquo;</a>
-            {% else %}
-                <a class="next" href="/{{ page.next }}.html">Next &rsaquo;</a>
-            {% endif %}
-        {% endif %}
-    </p>
-    
-    <div id="content">
+        {% include nav.html %}
+    </div>
+        
+    <div id="content" class="content">
         {{ content }}
     </div>
+    
+    {% include nav.html %}
     
     {% include footer.html %}
     
