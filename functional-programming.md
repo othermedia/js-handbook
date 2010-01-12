@@ -8,8 +8,8 @@ next:     jake
 
 Functions are the basic unit of composition in JavaScript. They allow us to
 create reusable subroutines, add methods to objects, and much more. But
-functions are not merely procedures---they are data. This opens any number of
-doors, including higher-order functions, function composition and currying---in
+functions are not merely procedures--they are data. This opens any number of
+doors, including higher-order functions, function composition and currying--in
 other words, the arsenal of techniques, idioms and approaches generally
 referred to as _functional programming_.
 
@@ -36,9 +36,9 @@ function() {
 
 The name 'lambda' comes from the [lambda calculus][lc], where the Greek letter
 λ denotes a function. Lambdas are useful for ad-hoc function definitions, where
-a function is not going to be reused, but they are most important---both in
+a function is not going to be reused, but they are most important--both in
 JavaScript development generally, and in functional programming
-specifically---for creating _closures_.
+specifically--for creating _closures_.
 
   [lc]: http://en.wikipedia.org/wiki/Lambda_calculus
 
@@ -48,45 +48,44 @@ Closures
 
 A closure is a function with free variables bound in its lexical environment.
 That's a bit of a mouthful, so let's take it piece by piece. Here's an example
-of a function containing a free variable:
+of a function containing a free variable.
 
 {% highlight javascript %}
 var f = function(x) {
-    return x + y;
+    var y = 5;
+    
+    return x + y + z;
 };
 {% endhighlight %}
 
 The variable `x`, as a parameter of `f`, is _bound_ in the scope of that
-function. The variable `y`, however, is not a parameter of `f`, so we say it
-occurs _free_. If a function containing a free variable is a closure, then that
-variable must be bound in some outer scope, i.e. in the environment of the
-function. To make `f` into a closure we must bind `y`.
+function. Variables can also be bound with the `var` keyword, so the variable
+`y` is also considered a bound variable. The variable `z`, however, is not
+bound either as a parameter of `f` or within the function body using the `var`
+keyword, so we say it occurs _free_.
+
+If a function containing a free variable is a closure, then that variable must
+be bound in some outer scope, i.e. in the environment of the function. To make
+`f` into a closure we must bind `y` in `f`'s environment.
 
 {% highlight javascript %}
-var y = 1;
-
-var f = function(x) {
-    return x + y;
-};
-{% endhighlight %}
-
-Commonly, the outer scope is another function, so we might write something like
-the following:
-
-{% highlight javascript %}
-var g = function(a) {
-    var b = 1 - a, h;
+(function() {
+    var y = 1,
     
-    h = function(c) {
-        return b * c;
+    f = function(x) {
+        var y = 5;
+        
+        return x + y + z;
     };
-    
-    return h;
-};
+  
+    return f;
+})();
 {% endhighlight %}
 
-In this example, `h` is a closure containing the free variable `b`, which is
-bound in an outer scope (the definition of the function `g`).
+Richard Cornford's [thorough discussion of JavaScript closures][closures] is a
+valuable supplement to this section.
+
+  [closures]: http://www.jibbering.com/faq/faq_notes/closures.html
 
 
 Higher-order functions
@@ -116,7 +115,7 @@ new list as a result, e.g. _g(\[1,2,3\]) → \[2,3,4\]_. More generally,
 > \[f(x<sub>1</sub>), f(x<sub>2</sub>), ..., f(x<sub>n-1</sub>),
 > f(x<sub>n</sub>)\]
 
-`Map` is an example of a higher-order function---a function that takes another
+`Map` is an example of a higher-order function--a function that takes another
 function as an argument.
 
 

@@ -99,7 +99,7 @@ quantities.
 Lastly, and perhaps most importantly, extractions offer one the possibility of
 improving on one's initial efforts. Application code is often written in too
 much of a hurry; "After all," thinks the programmer, "it will never appear
-outside this site, so all it needs to do is _work_---I don't need to spend days
+outside this site, so all it needs to do is _work_--I don't need to spend days
 ensuring it's interoperable and has a good API."
 
 When extracting a library, one shouldn't be afraid of changing the API. After
@@ -122,7 +122,31 @@ Helium command line tool. Just run the `he create` command:
 
     he create my-library
 
-Obviously `my-library` should be the name of the library you're writing.
+Obviously `my-library` should be the name of the library you're writing. This
+will produce a summary like this one.
+
+    Generating JavaScript project in /Users/beastaugh/projects/my-library...
+    create my-library/test/index.html
+    create my-library/source/test.js
+    create my-library/Jakefile
+    create my-library/jake.yml
+    create my-library/.gitignore
+
+    Building project using Jake...
+    create my-library/build/test.js
+    created: /Users/beastaugh/projects/my-library/build/test.js
+    create test/build/test-min.js
+    created: /Users/beastaugh/projects/my-library/build/test-min.js
+    Copying ./build/test-min.js --> ./test/lib/test-min.js
+    Writing package listing to ./test/packages.js
+
+    ... done, now your new JavaScript project is ready.
+
+      * Build your project by running `jake` in the root directory
+      * We've added generated files to your .gitignore
+      * Keep your dependencies up-to-date in jake.yml
+      * Point test/index.html at your Helium server and write some tests!
+
 
 * Generating a stub project with `he create`
 * Moving your existing code into the stub project

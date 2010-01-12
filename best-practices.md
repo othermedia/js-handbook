@@ -112,7 +112,7 @@ handler, and then the images are looped over again. Each thumbnail only
 corresponds to one image, so only one loop should be required.
 
 Worse, all the images are requested as soon as the code is run. They might as
-well just be added in the HTML document---at least then there wouldn't be the
+well just be added in the HTML document--at least then there wouldn't be the
 overhead of creating new DOM elements. This is not just a question of reducing
 load times: it can also cause race conditions. Because an image might take a
 while to load, if you click its corresponding thumbnail while it's still
