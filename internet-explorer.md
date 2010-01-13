@@ -48,3 +48,26 @@ in this style: create the image, add the event handler, and only then set the
     });
 
 It's not as elegant, but it has the advantage of actually working.
+
+
+Memory leaks
+------------
+
+Internet Explorer's JavaScript engine is prone to memory leaks, especially when
+writing code of any complexity--closures are notorious sources of this class of
+problem.
+
+Microsoft have a useful article, [Understanding and Solving Internet Explorer
+Leak Patterns][ieleaks], which covers memory IE memory leaks in general and
+those caused by closures in particular. Richard Cornford's article on
+JavaScript closures also has [an entire section][ieleaks2] dedicated to the
+Internet Explorer memory leak problem.
+
+One should bear Knuth's rule in mind: "Premature optimization is the root of
+all evil." Detecting and solving memory leaks is a painstaking, time-consuming
+business. Like all performance issues, memory leaks should be addressed as and
+when they become a real problem for users of the library or application. Don't
+go looking for trouble.
+
+  [ieleaks]:  http://msdn.microsoft.com/en-us/library/bb250448(VS.85).aspx
+  [ieleaks2]: http://www.jibbering.com/faq/faq_notes/closures.html#clMem
