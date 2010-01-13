@@ -223,19 +223,25 @@ For example, say you want to extract a version number from your version control
 system and inject it into your code along with the build name. Your source code
 should contain something like this:
 
-    MyJavaScriptLib.VERSION = "<%= version %>-<%= build %>";
+{% highlight javascript %}
+MyJavaScriptLib.VERSION = "<%= version %>-<%= build %>";
+{% endhighlight %}
 
 And your `Jakefile` should contain a helper called `version`:
 
-    jake_helper :version do
-      # extract version number from svn, git, whatever
-      # e.g. return '1.0'
-    end
+{% highlight ruby %}
+jake_helper :version do
+  # extract version number from svn, git, whatever
+  # e.g. return '1.0'
+end
+{% endhighlight %}
 
 Jake has a built-in helper called `build` that returns the current build name.
 When built, the output would contain the following:
 
-    MyJavaScriptLib.VERSION = "1.0-src";    // or "1.0-min" for the 'min' build
+{% highlight javascript %}
+MyJavaScriptLib.VERSION = "1.0-src";    // or "1.0-min" for the 'min' build
+{% endhighlight %}
 
 
 ### Event hooks
@@ -257,16 +263,18 @@ sets of minification options have been run. At this point you can use any
 metadata you've gathered to generate more code, copy files to your distribution
 directory, etc.
 
-    $register = {}
-  
-    jake_hook :file_created do |build, pkg, build_type, path|
-      $register[path] = pkg.meta
-    end
-  
-    jake_hook :build_complete do |build|
-      FileUtils.cp 'README', build.build_directory + '/README'
-      # generate code from $register
-    end
+{% highlight ruby %}
+$register = {}
+
+jake_hook :file_created do |build, pkg, build_type, path|
+  $register[path] = pkg.meta
+end
+
+jake_hook :build_complete do |build|
+  FileUtils.cp 'README', build.build_directory + '/README'
+  # generate code from $register
+end
+{% endhighlight %}
 
 
 License
