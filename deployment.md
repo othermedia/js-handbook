@@ -1,7 +1,7 @@
 ---
 layout:   article
 title:    Deploying your library
-previous: development
+previous: testing
 next:     best-practices
 ---
 

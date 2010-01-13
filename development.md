@@ -2,7 +2,7 @@
 layout:   article
 title:    Developing new libraries
 previous: libraries
-next:     deployment
+next:     testing
 ---
 
 
@@ -151,7 +151,6 @@ will produce a summary like this one.
 * Generating a stub project with `he create`
 * Moving your existing code into the stub project
 * Making the code more general
-* Writing test cases
 
 
 Dependency management

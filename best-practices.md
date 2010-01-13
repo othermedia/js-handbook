@@ -23,7 +23,10 @@ Testing
 
 All libraries should have tests, as should any application code beyond a
 certain level of complexity. Helium will set up a `test/` directory when you
-run `he create`; don't just leave it empty.
+run `he create`; don't just leave it empty. More information on how to write
+tests for your libraries is available in the [chapter on testing][testing].
+
+  [testing]: testing.html
 
 
 Performance
