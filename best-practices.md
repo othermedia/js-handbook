@@ -59,17 +59,23 @@ to a larger version:
 {% highlight html %}
 <div id="gallery">
     <ul class="thumbnails">
-        <li><a href="image-1.jpg">
-            <img src="thumbnail-1.jpg" alt="">
-        </a></li>
+        <li>
+            <a href="image-1.jpg">
+                <img src="thumbnail-1.jpg" alt="">
+            </a>
+        </li>
         
-        <li><a href="image-2.jpg">
-            <img src="thumbnail-2.jpg" alt="">
-        </a></li>
+        <li>
+            <a href="image-2.jpg">
+                <img src="thumbnail-2.jpg" alt="">
+            </a>
+        </li>
         
-        <li><a href="image-3.jpg">
-            <img src="thumbnail-3.jpg" alt="">
-        </a></li>
+        <li>
+            <a href="image-3.jpg">
+                <img src="thumbnail-3.jpg" alt="">
+            </a>
+        </li>
     </ul>
 </div>
 {% endhighlight %}
