@@ -2,7 +2,7 @@
 layout:   article
 title:    Deploying your library
 previous: testing
-next:     best-practices
+next:     style
 ---
 
 

@@ -6,6 +6,10 @@ next:     deployment
 ---
 
 
+All libraries should have tests, as should any application code beyond a
+certain level of complexity. Helium will set up a `test/` directory when you
+run `he create`; don't just leave it empty.
+
 Some types of library are amenable to unit testing--those primarily concerned
 with data structures, algorithms, general DOM querying and manipulation all
 fall into this category.

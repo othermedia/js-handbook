@@ -1,36 +1,10 @@
 ---
 layout:   article
-title:    Best practices
-previous: deployment
+title:    Performance
+previous: style
 next:     functional-programming
 ---
 
-
-Hard work should be done in libraries. If the code for an application component
-takes up more than a page, start looking for ways to turn it into a library.
-
-
-Style
------
-
-When operating on collections, methods like `forEach`, `map`, `filter` and
-`reduce` can make your code more comprehensible. Loops do not convey intention
-well; avoid them.
-
-
-Testing
--------
-
-All libraries should have tests, as should any application code beyond a
-certain level of complexity. Helium will set up a `test/` directory when you
-run `he create`; don't just leave it empty. More information on how to write
-tests for your libraries is available in the [chapter on testing][testing].
-
-  [testing]: testing.html
-
-
-Performance
------------
 
 Avoid premature optimisation. When creating a new piece of functionality, the
 most important thing is to write clear, expressive, correct code. You can make
@@ -49,7 +23,8 @@ available.
   [webinsp]: http://trac.webkit.org/wiki/Web%20Inspector
 
 
-### Lazy loading
+Lazy loading
+------------
 
 Certain general principles will always apply. This one is paramount:
 
@@ -170,7 +145,8 @@ images[0].show();
 {% endhighlight %}
 
 
-### Understand the consequences
+Understand the consequences
+---------------------------
 
 Be aware of what your code is doing. You should know when calling a method will
 run a DOM query or make an HTTP request. Closures can be used to improve

@@ -1,7 +1,7 @@
 ---
 layout:   article
 title:    Functional programming
-previous: best-practices
+previous: performance
 next:     jake
 ---
 
