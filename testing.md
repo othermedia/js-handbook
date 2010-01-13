@@ -10,7 +10,7 @@ All libraries should have tests, as should any application code beyond a
 certain level of complexity. Helium will set up a `test/` directory when you
 run `he create`; don't just leave it empty.
 
-Some types of library are amenable to unit testing--those primarily concerned
+Some types of library are amenable to unit testing. Those primarily concerned
 with data structures, algorithms, general DOM querying and manipulation all
 fall into this category.
 
@@ -23,8 +23,8 @@ tends to be less than straightforward. In these cases, it is often easier to
 run the test suite "by hand", writing examples which are then executed by the
 tester in the different browsers.
 
-Much of Ojay's test suite--mainly that concerned with the generation of user
-interface elements such as accordions and paginators--is written in this style.
+The parts of Ojay's test suite concerned with the generation of user interface
+elements such as accordions and paginators are written in this style.
 
 Test cases should be as simple as possible, implementing only as much as is
 necessary to test the feature at issue.
