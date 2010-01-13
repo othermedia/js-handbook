@@ -1,17 +1,17 @@
 <p class="nav clear">
-    {% if page.previous %}
-        {% if page.previous == "/" %}
-            <a class="previous" href="/">&lsaquo; Previous</a>
-        {% else %}
-            <a class="previous" href="/{{ page.previous }}.html">&lsaquo; Previous</a>
-        {% endif %}
-    {% endif %}
+            {% if page.previous %}
+                {% if page.previous == "." %}
+                    <a class="previous" href=".">&lsaquo; Previous</a>
+                {% else %}
+                    <a class="previous" href="/{{ page.previous }}.html">&lsaquo; Previous</a>
+                {% endif %}
+            {% endif %}
     
-    {% if page.next %}
-        {% if page.next == "/" %}
-            <a class="next" href="/">Next &rsaquo;</a>
-        {% else %}
-            <a class="next" href="/{{ page.next }}.html">Next &rsaquo;</a>
-        {% endif %}
-    {% endif %}
-</p>
+            {% if page.next %}
+                {% if page.next == "." %}
+                    <a class="next" href=".">Next &rsaquo;</a>
+                {% else %}
+                    <a class="next" href="/{{ page.next }}.html">Next &rsaquo;</a>
+                {% endif %}
+            {% endif %}
+        </p>

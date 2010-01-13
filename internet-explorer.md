@@ -2,7 +2,7 @@
 layout:   article
 title:    Working around Internet Explorer
 previous: helium
-next:     /
+next:     .
 ---
 
 

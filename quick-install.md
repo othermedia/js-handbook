@@ -1,7 +1,7 @@
 ---
 layout:   article
 title:    Quick install guide
-previous: /
+previous: .
 next:     libraries
 ---
 
