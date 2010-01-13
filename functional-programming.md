@@ -25,7 +25,7 @@ introductions to these features are available elsewhere, for example in the
 Lambdas
 -------
 
-Lambdas are, simply, anonymous functions, and their use is ubiquitous in modern
+Lambdas are simply anonymous functions, and their use is ubiquitous in modern
 JavaScript development. Event handlers, for example, are almost always lambdas.
 
 {% highlight javascript %}
@@ -82,7 +82,7 @@ be bound in some outer scope, i.e. in the environment of the function. To make
 })();
 {% endhighlight %}
 
-Richard Cornford's [thorough discussion of JavaScript closures][closures] is a
+Richard Cornford's [discussion of JavaScript closures][closures] is a
 valuable supplement to this section.
 
   [closures]: http://www.jibbering.com/faq/faq_notes/closures.html
