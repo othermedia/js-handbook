@@ -82,9 +82,45 @@ be bound in some outer scope, i.e. in the environment of the function. To make
 })();
 {% endhighlight %}
 
+One important use of closures, outside functional programming strictly defined,
+is memoisation. For example, consider a function `fib` which calculates any
+given [Fibonacci number][fibnum]. If we recalculate the entire sequence of
+Fibonacci numbers each time up to our chosen _n_ the function will run in _O(N)_
+time. However, if we memoise the results it will return previously-calculated
+results in _O(1)_ time, and results which haven't yet been calculated will be
+returned in _O(N-x)_ time, where _x_ is the number of previously-calculated
+results.
+
+By creating a new anonymous function and immediately calling it, we can hide
+the memoised sequence from the rest of the program, thus ensuring it can't be
+accidentally overwritten, and allowing our function to retain a pure interface.
+
+{% highlight javascript %}
+var fib = (function() {
+    var sequence = [0, 1],
+    
+    updateTo = function(limit) {
+        for (var i = sequence.length; i <= limit; i++) {
+            sequence[i] = sequence[i - 1] + sequence[i - 2];
+        }
+    };
+    
+    // This closure, as the return value of the immediately-executed
+    // lambda, will be assigned to the variable 'fib'.
+    return function(index) {
+        if (!sequence[index]) {
+            updateTo(index);
+        }
+        
+        return sequence[index];
+    };
+})();
+{% endhighlight %}
+
 Richard Cornford's [discussion of JavaScript closures][closures] is a
 valuable supplement to this section.
 
+  [fibnum]:   http://en.wikipedia.org/wiki/Fibonacci_number
   [closures]: http://www.jibbering.com/faq/faq_notes/closures.html
 
 
