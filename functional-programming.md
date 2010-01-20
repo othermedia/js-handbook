@@ -118,10 +118,13 @@ var fib = (function() {
 {% endhighlight %}
 
 Richard Cornford's [discussion of JavaScript closures][closures] is a
-valuable supplement to this section.
+valuable supplement to this section, while [this article][fibcosts] contains an
+interesting look at potential hidden complexity costs of the algorithm
+shown above.
 
   [fibnum]:   http://en.wikipedia.org/wiki/Fibonacci_number
   [closures]: http://www.jibbering.com/faq/faq_notes/closures.html
+  [fibcosts]: http://www.catonmat.net/blog/on-the-linear-time-algorithm-for-finding-fibonacci-numbers/
 
 
 Higher-order functions
