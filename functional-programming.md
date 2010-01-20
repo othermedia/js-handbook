@@ -34,7 +34,7 @@ function() {
 };
 {% endhighlight %}
 
-The name 'lambda' comes from the [lambda calculus][lc], where the Greek letter
+The term 'lambda' comes from the [lambda calculus][lc], where the Greek letter
 λ denotes a function. Lambdas are useful for ad-hoc function definitions, where
 a function is not going to be reused, but they are most important--both in
 JavaScript development generally, and in functional programming
