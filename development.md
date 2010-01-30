@@ -123,7 +123,7 @@ Helium command line tool. Just run the `he create` command:
     he create my-library
 
 Obviously `my-library` should be the name of the library you're writing. This
-will produce a summary like this one.
+will produce a summary like this:
 
     Generating JavaScript project in /Users/beastaugh/projects/my-library...
     create my-library/test/index.html
@@ -147,14 +147,9 @@ will produce a summary like this one.
       * Keep your dependencies up-to-date in jake.yml
       * Point test/index.html at your Helium server and write some tests!
 
-* Generating a stub project with `he create`
-* Moving your existing code into the stub project
-* Making the code more general
-
-
-Dependency management
----------------------
-
-* JS.Packages
-* Writing manifests
-* Custom loaders
+If you're extracting existing code into the library, the first thing to do is
+copy it into the `source` directory in the new library directory. Next, you
+should amend the `jake.yml` file to reflect the source files your library
+contains. Then list its dependencies, and the objects it provides. In general,
+you shouldn't have to stray from the defaults too much, but most settings in
+the config file can be adjusted to suit the project at hand.
