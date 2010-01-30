@@ -11,7 +11,8 @@ Major libraries
 
 The major JavaScript libraries we use are [YUI][yui], [JS.Class][jsclass] and
 [Ojay][ojay]. These libraries handle the core areas of modern web client-side
-development: Ajax, animation, DOM manipulation and event handling.
+development: DOM traversal and manipulation, event handling, Ajax, and
+animation.
 
 
 ### JS.Class
