@@ -6,7 +6,7 @@
 /* End hide from IE-mac */
 
 html, body {margin:0; border:none; padding:0; background:#fafafa; font-family:Helvetica, Arial, sans-serif; font-size:14px; color:#404040; line-height:1.5;}
-#wrapper {width:60em; margin:0 auto 30px auto; border:1px solid #e5e5e5; border-top:none; padding:1.5em; background:#fff;}
+#wrapper {width:50em; margin:0 auto 30px auto; border:1px solid #e5e5e5; border-top:none; padding:1.5em; background:#fff;}
 
 h1, h2, h3, h4 {margin:0 0 5px 0; font-weight:normal;}
 h1 {margin-bottom:0; border-bottom:1px solid #f2f2f2; padding-bottom:10px; font-size:30px; font-family:'Times New Roman', Times, serif; text-align:center; font-style:italic;}
@@ -18,7 +18,7 @@ ol, ul {padding-left:30px;}
 ul {list-style:circle;}
 ol {list-style:decimal;}
 li {margin:5px 0;}
-pre {margin:20px 0; border:1px solid #f2f2f2; padding:9px 15px; background:#fafafa;}
+pre {margin:15px 0; border:1px solid #f2f2f2; padding:9px 15px; background:#fafafa;}
 code {font-family:Courier, 'Courier New', monospace; font-size:inherit;}
 sup {vertical-align:super;}
 sub {vertical-align:sub;}
