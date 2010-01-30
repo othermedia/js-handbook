@@ -127,26 +127,25 @@ will produce a summary like this one.
 
     Generating JavaScript project in /Users/beastaugh/projects/my-library...
     create my-library/test/index.html
-    create my-library/source/test.js
+    create my-library/source/my-library.js
     create my-library/Jakefile
     create my-library/jake.yml
     create my-library/.gitignore
-
+    
     Building project using Jake...
-    create my-library/build/test.js
-    created: /Users/beastaugh/projects/my-library/build/test.js
-    create test/build/test-min.js
-    created: /Users/beastaugh/projects/my-library/build/test-min.js
-    Copying ./build/test-min.js --> ./test/lib/test-min.js
+    create my-library/build/my-library.js
+    created: /Users/beastaugh/projects/my-library/build/my-library.js
+    create my-library/build/my-library-min.js
+    created: /Users/beastaugh/projects/my-library/build/my-library-min.js
+    Copying ./build/my-library-min.js --> ./test/lib/my-library-min.js
     Writing package listing to ./test/packages.js
-
+    
     ... done, now your new JavaScript project is ready.
-
+    
       * Build your project by running `jake` in the root directory
       * We've added generated files to your .gitignore
       * Keep your dependencies up-to-date in jake.yml
       * Point test/index.html at your Helium server and write some tests!
-
 
 * Generating a stub project with `he create`
 * Moving your existing code into the stub project
