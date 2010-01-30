@@ -10,8 +10,6 @@ This quick install guide for our JavaScript toolchain assumes that the `git`,
 `ruby` and `gem` binaries are already installed.
 
     sudo gem update --system
-    sudo gem install gemcutter
-    sudo gem tumble
     sudo gem install jake helium thin
 
 Let's briefly review these commands. They all start with `sudo`: this is
@@ -24,29 +22,13 @@ libraries.
 
     sudo gem update --system
 
-This updates your RubyGems install to the latest version. This is required
-for the `gemcutter` gem. If your copy of RubyGems came with your operating
-system or was installed via your OS package manager then it's likely to be
-quite out of date.
-
-    sudo gem install gemcutter
-
-This command installs the `gemcutter` gem. [Gemcutter][gemcutter] is the Ruby
-community's new place to host gems. It's taking over from
-[Rubyforge][rubyforge] as the default RubyGem source. The `gemcutter` gem
-provides a simple command to change your primary RubyGems to Gemcutter, as well
-as tools to publish new gems to Gemcutter (you probably won't need these, but
-you never know).
-
-    sudo gem tumble
-
-This changes your primary RubyGem source to `http://gemcutter.org`. If you run
-it again it will remove Gemcutter from your gem sources, so don't.
+This updates your RubyGems install to the latest version. If your copy of
+RubyGems came with your operating system or was installed via your OS package
+manager then it's likely to be quite out of date.
 
     sudo gem install jake helium thin
 
-This is the command we've been building up to--the point of the whole process.
-It installs [Jake][jake], [Helium][helium] and [Thin][thin].
+This command installs [Jake][jake], [Helium][helium] and [Thin][thin].
 
 **Jake** is a JavaScript build tool; it's our equivalent of [Make][make] or
 [Rake][rake]. Generally all you need to do is write a `jake.yml` file in the
@@ -66,7 +48,6 @@ projects to be deployed by it.
 could also use [Mongrel][mongrel] or the [WEBrick][webrick] server that comes
 with Ruby.
 
-  [gemcutter]: http://gemcutter.org/
   [rubyforge]: http://rubyforge.org/
   [jake]:      http://github.com/jcoglan/jake
   [jakedocs]:  /jake.html
