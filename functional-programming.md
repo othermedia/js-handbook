@@ -70,7 +70,7 @@ be bound in some outer scope, i.e. in the environment of the function. To make
 
 {% highlight javascript %}
 (function() {
-    var y = 1,
+    var z = 1,
     
     f = function(x) {
         var y = 5;
