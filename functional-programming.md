@@ -163,9 +163,135 @@ Referential transparency
 
 
 
-Currying
---------
+Partial application & currying
+------------------------------
 
+JavaScript functions, as we have seen, are not merely procedures--they are
+_data_. Functions can accept other functions as arguments, and they can also
+return functions. Because of this, we can create functions which can be
+_partially applied_--that is, functions which can be passed fewer arguments
+than they notionally require to produce a result.
+
+By way of example, here's how one would ordinarily write a function to add two
+numbers together:
+
+{% highlight javascript %}
+var add = function(a, b) {
+    return a + b;
+};
+{% endhighlight %}
+
+Now, if we execute `add` with only one argument, it will produce an error.
+While this is desirable behaviour under many circumstances, it does limit what
+we can do with our `add` function. For example, let's consider mapping a
+function over a list of numbers. `Add` isn't going to do much good here: if we
+pass it as an argument to `map`, it will just throw an error, because it needs
+two arguments, not the one which each element of the list will provide. This is
+fine as far as it goes--it doesn't make much sense to try to add something to
+nothing--but it's not terribly useful.
+
+If we could somehow provide an initial value to `add`, which would be added to
+each element of the list, that _would_ be useful. In order to do this, we need
+to make our `add` function partially applicable.
+
+{% highlight javascript %}
+var addp = function(a, b) {
+    if (b) {
+        return a + b;
+    } else {
+        return function(c) {
+            return a + c;
+        };
+    }
+};
+{% endhighlight %}
+
+If both arguments are provided, `addp` returns the result of adding one to the
+other. If, on the other hand, only one argument `a` is provided, the result of
+applying the function is _another function_---one which, when applied to a
+second number `c`, returns the result of adding `a` to `c`.
+
+> map(addp(a), \[x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>a-1</sub>,
+> x<sub>a</sub>\]) → \[x<sub>1</sub> + a, x<sub>2</sub> + a, ...,
+> x<sub>n-1</sub> + a, x<sub>n</sub> + a\]
+
+This is all well and good when writing one's own functions, but most
+programming is done in the context of pre-existing libraries and applications
+with APIs that can't be changed so radically. However, partial application can
+still be utilised, by taking advantage of a technique known as _currying_.
+
+Named after the logician Haskell Curry--one of the originators of the
+technique--currying allows for the transformation of a function which accepts
+_n_ arguments into a partially applicable function that can accept one
+argument at a time. Consider the function _f = λxyz.M_, which has three
+parameters, _x_, _y_ and _z_. By currying, we obtain a new function
+_f* = λx.(λy.(λz.M))_. Some roughly equivalent JavaScript code follows.
+
+{% highlight javascript %}
+var f = function(x, y, z) {
+    return M(x, y, z);
+};
+
+var f_ = function(x) {
+    return function(y) {
+        return function(z) {
+            return M(x, y, z);
+        };
+    };
+};
+{% endhighlight %}
+
+The existence of first-class functions allows for the creation of a `curry`
+function to make it unnecessary to create curried functions "by hand". For
+example, if our original two-argument version of `add` were a library function
+which we wanted to partially apply, we could use currying to create a partially
+applicable version.
+
+{% highlight javascript %}
+var curry = function(fn) {
+    var args = Array.slice(arguments, 1);
+    
+    return function() {
+        return fn.apply(this || null, args.concat(Array.slice(arguments, 0)));
+    };
+};
+
+var addp = curry(add);
+{% endhighlight %}
+
+Note how this version of `curry` can only be applied to functions which take
+two arguments. With a little more work we can generalise it to a function which
+will take _n_ arguments, although we will need to specify _n_ when using it.
+
+{% highlight javascript %}
+var ncurry = function(fn, n) {
+    var largs = Array.slice(arguments, 2);
+    
+    return function() {
+        var args = largs.concat(Array.slice(arguments, 0));
+        
+        if (args.length < n) {
+            return ncurry.apply(this || null, [fn, n].concat(args));
+        } else {
+            return fn.apply(null, args);
+        }
+    };
+};
+
+var add3 = function(a, b, c) {
+    return a + b + c;
+};
+
+var add3p = ncurry(add3, 3);
+{% endhighlight %}
+
+Because of JavaScript's dynamic nature, it's hard to write a general `curry`
+function that works under all circumstances. The two versions presented above
+are more than adequate for most purposes, but for a more thorough discussion of
+the potential pitfalls involved, see the article
+['Approaches to currying in JavaScript'][currying].
+
+  [currying]: http://extralogical.net/articles/currying-javascript
 
 
 Folding over lists
