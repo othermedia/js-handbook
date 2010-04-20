@@ -294,6 +294,43 @@ the potential pitfalls involved, see the article
   [currying]: http://extralogical.net/articles/currying-javascript
 
 
+A brief interlude about the standard library
+--------------------------------------------
+
+The JavaScript standard library includes analogues of the higher-order
+functions discussed here. They are implemented as methods on instances of the
+`Array` object. `Map` we have already met; here's how to use the built-in
+version.
+
+{% highlight javascript %}
+// Return the squares of the numbers in an array
+[7, 3, 5].map(function(n) { return n * n; }); // -> [49, 9, 25]
+{% endhighlight %}
+
+There are two others: `reduce`, which we'll discuss shortly, and `filter`,
+which allows one to filter elements from an array based one some test (a
+function which returns a boolean value).
+
+{% highlight javascript %}
+// Return the odd numbers in this array
+[9, 7, 16, 4].filter(function(n) { return n % 2 !== 0; }); // -> [9, 7]
+{% endhighlight %}
+
+Because they always return arrays, calls to `map` and `filter` can be chained:
+
+{% highlight javascript %}
+// Return the even squares of the numbers in an array
+[12, 17, 4, 2]
+  .map(function(n) { return n * n; })
+  .filter(function(n) { return n % 2 === 0; }); // -> [144, 16, 4]
+{% endhighlight %}
+
+This is a consequence of the fact that `map` and `filter` are both [injective
+functions][injection].
+
+  [injection]: http://en.wikipedia.org/wiki/Injective_function
+
+
 Folding over lists
 ------------------
 
