@@ -13,9 +13,8 @@ appear on their own lines or not.
 
 However, the decisions about how one should structure one's code are
 fundamental, not surface details. Where should the abstraction boundaries
-between components and subroutines be drawn? When making such decisions, two
-principles--those of _decomposition_ and _abstraction_--should always be borne
-in mind.
+between components and subroutines be drawn? When making such decisions the
+principles of _decomposition_ and _abstraction_ should always be borne in mind.
 
 
 Abstraction
@@ -82,7 +81,7 @@ create a binary search tree implementation, but supplement it with methods like
 Perhaps the only advantage `arraySquares` has over `mapSquares` is performance.
 `MapSquares` will have to execute the function passed to `map` once for every
 element in the collection, which is a very small amount of overhead, but might
-add up if the collection is very large, or `mapSquares` is being called a lot.
+add up if the collection is large, or `mapSquares` is called frequently.
 
 This should not dissuade you from writing a function like `mapSquares` instead
 of one like `arraySquares`. One rarely knows in advance where the performance
@@ -147,9 +146,9 @@ Gallery.prototype.nextImage = function() {
 
 Gallery.prototype.setImage = function(index) {
     var currentImage = this._images[this._currentIndex],
-        nextImage    = this._images[index];
+        newImage     = this._images[index];
     
-    currentImage.hide()._(nextImage).show();
+    currentImage.hide()._(newImage).show();
     
     this._currentIndex = index;
 };
@@ -168,3 +167,7 @@ being hard to read and maintain, are usually overly specific. By breaking a
 long method definition into several shorter ones, we haven't merely made the
 code easier to understand, but also made it more general. It's clear that
 decomposition enables abstraction.
+
+It's also worth noting that despite this major restructuring, the new `rotate`
+method retains the same API. The functionality of our amended implementation is
+a proper superset of our initial one.
