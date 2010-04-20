@@ -83,3 +83,75 @@ Worrying about using `for` loops rather than `map` or `forEach` is the worst
 kind of premature optimisation: it will most likely have no appreciable affect
 on the performance of your application, and will make your code less concise,
 less clear, and harder to maintain.
+
+
+Decomposition
+-------------
+
+The Unix philosophy is one of small pieces, loosely coupled: every component
+should do one thing well. We should strive to emulate this approach: large
+applications should be created by composing small pieces.
+
+Decomposition takes many forms. One very basic rule is to keep methods short:
+each method should, ideally, do only one thing. If there are two orthogonal
+tasks to be performed, they should not be done in the same method. For example,
+an image gallery might rotate the current image at given intervals.
+Implementing this functionality might consist of writing a method like the
+following:
+
+{% highlight javascript %}
+Gallery.prototype.rotate = function(interval) {
+    this._rotation = setInterval(function() {
+        var currentIndex = this._currentIndex,
+            currentImage = this._images[currentIndex],
+            nextIndex    = currentIndex + 1,
+            nextImage;
+
+        if (nextIndex >= this._images.length) nextIndex = 0;
+
+        nextImage = this._images[nextIndex];
+
+        currentImage.hide()._(nextImage).show();
+
+        this._currentIndex = nextIndex;
+    }.bind(this), interval);
+};
+{% endhighlight %}
+
+There's too much going on in this method. We can distinguish at least three
+separate functions: changing the image from one to another; switching to the
+_next_ image; and setting up a rotation.
+
+{% highlight javascript %}
+Gallery.prototype.rotate = function(interval) {
+    this._rotation = setInterval(this.nextImage.bind(this), interval);
+};
+
+Gallery.prototype.nextImage = function() {
+    var nextIndex = this._currentIndex + 1;
+    this.setImage(nextIndex < this._images.length ? nextIndex : 0);
+};
+
+Gallery.prototype.setImage = function(index) {
+    var currentImage = this._images[this._currentIndex],
+        nextImage    = this._images[index];
+
+    currentImage.hide()._(nextImage).show();
+
+    this._currentIndex = index;
+};
+{% endhighlight %}
+
+Instead of one large method, we now have three smaller ones. While this is an
+improvement, the real benefits would be seen if additional functionality were
+added to the gallery. For example, controls to display the next and previous
+images could easily be added and be made to use the `nextImage` method
+(implementing a `previousImage` method is left as an exercise for the reader).
+This wouldn't be possible with the first version; its monolithic `rotate`
+method doesn't allow for much composition.
+
+We can characterise this problem as a lack of generality: long methods, besides
+being hard to read and maintain, are usually overly specific. By breaking a
+long method definition into several shorter ones, we haven't merely made the
+code easier to understand, but also made it more general. It's clear that
+decomposition enables abstraction.
