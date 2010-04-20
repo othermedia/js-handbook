@@ -6,11 +6,24 @@ next:     performance
 ---
 
 
-Hard work should be done in libraries. If the code for an application component
-takes up more than a page, start looking for ways to turn it into a library.
+Style, in computer programming, has both ephemeral and substantial aspects. One
+can easily find oneself embroiled in holy wars regarding the superior merits of
+tabs or spaces, or whether the opening braces of function definitions should
+appear on their own lines or not.
+
+However, the decisions about how one should structure one's code are
+fundamental, not surface details. Where should the abstraction boundaries
+between components and subroutines be drawn? When making such decisions, two
+principles--those of _decomposition_ and _abstraction_--should always be borne
+in mind.
+
 
 Abstraction
 -----------
+
+Abstraction is the process of reducing and factoring out details so that one
+can focus on the important concepts. It's a way of writing more general code,
+reducing duplication, and hiding implementation details.
 
 When operating on collections, methods like `forEach`, `map`, `filter` and
 `reduce` can make your code more comprehensible. Loops do not convey intention
@@ -106,13 +119,13 @@ Gallery.prototype.rotate = function(interval) {
             currentImage = this._images[currentIndex],
             nextIndex    = currentIndex + 1,
             nextImage;
-
+        
         if (nextIndex >= this._images.length) nextIndex = 0;
-
+        
         nextImage = this._images[nextIndex];
-
+        
         currentImage.hide()._(nextImage).show();
-
+        
         this._currentIndex = nextIndex;
     }.bind(this), interval);
 };
@@ -135,9 +148,9 @@ Gallery.prototype.nextImage = function() {
 Gallery.prototype.setImage = function(index) {
     var currentImage = this._images[this._currentIndex],
         nextImage    = this._images[index];
-
+    
     currentImage.hide()._(nextImage).show();
-
+    
     this._currentIndex = index;
 };
 {% endhighlight %}
