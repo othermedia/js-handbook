@@ -392,6 +392,36 @@ var sum = foldl(add, 0);
 Specialising folds
 ------------------
 
+We can express many combinations of other list operations such as `map` and
+`filter` as folds. For example, suppose we wanted to create a function which
+took an array of integers and returned an array of the squares of all the odd
+numbers.
+
+{% highlight javascript %}
+var squareOdds = function(ns) {
+    return ns.filter(function(n) {
+        return n % 2 !== 0;
+    }).map(function(n) {
+        return n * n;
+    });
+};
+{% endhighlight %}
+
+We can rewrite these two operations as a single one using a fold:
+
+{% highlight javascript %}
+var squareOdds = function(ns) {
+    return ns.reduce(function(squares, n) {
+        if (n % 2 !== 0) squares.push(n * n);
+        return squares;
+    }, []);
+};
+{% endhighlight %}
+
+The advantages of this version are two-fold: the array is only traversed once,
+and it only uses one function, albeit a slightly more complex one. Although
+there may be performance gains from code like this under some circumstances,
+its primary value is in its expressiveness.
 
 
 Why functional programming?
