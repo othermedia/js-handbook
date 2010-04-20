@@ -6,13 +6,12 @@ next:     functional-programming
 ---
 
 
+Performance issues should be fixed at the library level wherever possible:
+application code should be lightweight and idiomatic.
+
 Avoid premature optimisation. When creating a new piece of functionality, the
 most important thing is to write clear, expressive, correct code. You can make
 it fast tomorrow.
-
-Performance issues should be fixed at the library level wherever possible:
-application code should be lightweight and idiomatic. If you face a tradeoff
-between a little bit of speed and a lot of readability, make it readable.
 
 Optimisations should not be attempted on the basis of guesswork. Profile your
 code, and see where the bottlenecks are. [Firebug][firebug] and
@@ -26,34 +25,23 @@ available.
 Lazy loading
 ------------
 
-Certain general principles will always apply. This one is paramount:
+It's often sensible to delay the execution of some code until it's actually
+required. This will always be the case for some things; a delete action that
+ran as soon as the page loaded rather than when the user clicked it would not
+be very popular. However, delayed execution can also improve performance under
+many circumstances.
 
-> Don't make it until you need it.
-
-This applies very broadly, but a specific example will make it clearer. Suppose
+A specific example of this is _lazy loading_, where some resource desired by
+the user is not loaded or created until it is requested. For example, suppose
 you are creating an image gallery from a list of thumbnails, each of which link
 to a larger version:
 
 {% highlight html %}
 <div id="gallery">
     <ul class="thumbnails">
-        <li>
-            <a href="image-1.jpg">
-                <img src="thumbnail-1.jpg" alt="">
-            </a>
-        </li>
-        
-        <li>
-            <a href="image-2.jpg">
-                <img src="thumbnail-2.jpg" alt="">
-            </a>
-        </li>
-        
-        <li>
-            <a href="image-3.jpg">
-                <img src="thumbnail-3.jpg" alt="">
-            </a>
-        </li>
+        <li><a href="image-1.jpg"><img src="thumbnail-1.jpg" alt=""></a></li>
+        <li><a href="image-2.jpg"><img src="thumbnail-2.jpg" alt=""></a></li>
+        <li><a href="image-3.jpg"><img src="thumbnail-3.jpg" alt=""></a></li>
     </ul>
 </div>
 {% endhighlight %}
@@ -168,6 +156,12 @@ $('a.highlight').on('click', function() {
     shiny.flash();
 });
 {% endhighlight %}
+
+Of course, if you are inserting paragraphs with a class of `shiny` into the
+document after this code runs, the `flash` method won't be run on them, so
+sometimes it _is_ necessary to re-query the DOM. The important lesson is to do
+this as rarely as possible; DOM queries are, along with network latency, one of
+the biggest performance bottlenecks in JavaScript applications.
 
 Certain kinds of query are much faster than others. All browsers keep a global
 lookup table of element `id`s, so accessing a DOM node via its `id` value will
