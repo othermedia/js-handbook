@@ -7,33 +7,33 @@ next:     libraries
 
 
 This quick install guide for our JavaScript toolchain assumes that the `git`,
-`ruby` and `gem` binaries are already installed.
+`ruby` and `gem` binaries are already installed. Here are the commands you'll
+need to run:
 
-    sudo gem update --system
-    sudo gem install jake helium thin
-
-Let's briefly review these commands. They all start with `sudo`: this is
-because we assume that your RubyGems library is a system-wide one, i.e. it
-doesn't live in your home directory. If this isn't the case, you should just
-run the `gem` command directly without `sudo`.
+    gem update --system
+    gem install jake helium
 
 Gems are Ruby packages; they are the standard way of distributing Ruby
-libraries.
+libraries. This install guide assumes that you're installing gems to your home
+directory. If you want to install them to the system-wide repository, prefix
+both commands with `sudo`.
 
-    sudo gem update --system
+Let's expand slightly on what these commands will do.
+
+    gem update --system
 
 This updates your RubyGems install to the latest version. If your copy of
 RubyGems came with your operating system or was installed via your OS package
 manager then it's likely to be quite out of date.
 
-    sudo gem install jake helium thin
+    gem install jake helium
 
-This command installs [Jake][jake], [Helium][helium] and [Thin][thin].
+This command installs [Jake][jake] and [Helium][helium].
 
 **Jake** is a JavaScript build tool; it's our equivalent of [Make][make] or
 [Rake][rake]. Generally all you need to do is write a `jake.yml` file in the
 root of your project, specifying how your project should be built, and then run
-`jake` to build it. Run `jake --help` to see its options, and the
+`jake` to build it. Run `jake --help` to see its options, and read the
 [Jake documentation][jakedocs] for more details on how to write a build file
 and customise its output.
 
@@ -43,10 +43,6 @@ new JavaScript projects; and the serving of local test files. Run `he --help`
 to review its options. The [Helium documentation][hedocs] contains
 comprehensive explanations of how to set up a Helium server and create new
 projects to be deployed by it.
-
-**Thin** is the Ruby web server we recommend for running Helium locally. You
-could also use [Mongrel][mongrel] or the [WEBrick][webrick] server that comes
-with Ruby.
 
   [rubyforge]: http://rubyforge.org/
   [jake]:      http://github.com/jcoglan/jake
