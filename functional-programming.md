@@ -336,7 +336,7 @@ Folding over lists
 
 We have seen that `map` can be specialised to perform particular kinds of
 transformation, but `map` itself is a specialisation of a more general type of
-function: fold.
+function: a _fold_.
 
 Folds take lists and reduce them to another value. In the case of `map`, this
 is another list of the same length as the initial list, but the result of the
@@ -374,7 +374,7 @@ partially apply standard library functions, we'll have to curry it.
 {% highlight javascript %}
 var sum = function(list) {
     var _sum = function() {
-        return reduce(add, 0, list);
+        return list.reduce(add, 0);
     };
     
     return list ? _sum(list) : _sum;
