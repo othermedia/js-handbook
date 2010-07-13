@@ -68,7 +68,7 @@ or accidentally altering the original array.
 
 Furthermore, it's a more _general_ function. `ArraySquares` will work for any
 object which stores its elements as numerically-indexed properties and has a
-`length` property. `MapSquares` will work for any collection of elements with a
+`length` property. `MapSquares` will work for any collection of numbers with a
 `map` method.
 
 Polymorphism of this kind is one of the great advantages of dynamic languages
