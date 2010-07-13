@@ -67,9 +67,9 @@ There's less scope for declaring implicit globals, returning the wrong object,
 or accidentally altering the original array.
 
 Furthermore, it's a more _general_ function. `ArraySquares` will work for any
-object which stores its elements as numerically-indexed properties, which in
-practice means only arrays. `MapSquares` will work for any collection of
-numbers with a `map` method.
+object which stores its elements as numerically-indexed properties and has a
+`length` property. `MapSquares` will work for any collection of elements with a
+`map` method.
 
 Polymorphism of this kind is one of the great advantages of dynamic languages
 like JavaScript: simply by implementing a few methods to conform to the
