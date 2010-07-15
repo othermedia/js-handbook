@@ -58,8 +58,8 @@ Memory leaks
 ------------
 
 Internet Explorer's JavaScript engine is prone to memory leaks, especially when
-writing code of any complexity--closures are notorious sources of this class of
-problem.
+writing code of any complexity---closures are notorious sources of this class
+of problem.
 
 Microsoft have a useful article, [Understanding and Solving Internet Explorer
 Leak Patterns][ieleaks], which covers memory IE memory leaks in general and

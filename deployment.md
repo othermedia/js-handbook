@@ -31,11 +31,11 @@ The traditional way of loading external scripts into a web page is via a
 
     <script src="/javascripts/my_script.js" type="text/javascript"></script>
 
-This blocks the downloading of all other external page resources--images, other
-scripts and so on--until the script has been downloaded and run. Browsers can in
-fact fetch several resources in parallel, but when downloading a piece of
-JavaScript this capability is lost. This makes perceived and actual page load
-times increase significantly.
+This blocks the downloading of all other external page resources---images,
+other scripts and so on---until the script has been downloaded and run.
+Browsers can in fact fetch several resources in parallel, but when downloading
+a piece of JavaScript this capability is lost. This makes perceived and actual
+page load times increase significantly.
 
 Fortunately, methods have been developed to work around this limitation. The
 most common is to programmatically create script elements pointing to external

@@ -18,8 +18,8 @@ animation.
 ### JS.Class
 
 JS.Class facilitates object-oriented design in JavaScript. Its main use within
-our code is providing abstractions--primarily modules and classes, as seen in
-the Ruby programming language--that allow us to express common JavaScript
+our code is providing abstractions---primarily modules and classes, as seen in
+the Ruby programming language---that allow us to express common JavaScript
 design patterns in a structured and maintainable fashion. Many of our in-house
 libraries start with a line like this one:
 

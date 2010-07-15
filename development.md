@@ -99,7 +99,7 @@ quantities.
 Lastly, and perhaps most importantly, extractions offer one the possibility of
 improving on one's initial efforts. Application code is often written in too
 much of a hurry; "After all," thinks the programmer, "it will never appear
-outside this site, so all it needs to do is _work_--I don't need to spend days
+outside this site, so all it needs to do is _work_---I don't need to spend days
 ensuring it's interoperable and has a good API."
 
 When extracting a library, one shouldn't be afraid of changing the API. After

@@ -8,8 +8,8 @@ next:     jake
 
 Functions are the basic unit of composition in JavaScript. They allow us to
 create reusable subroutines, add methods to objects, and much more. But
-functions are not merely procedures--they are data. This opens any number of
-doors, including higher-order functions, function composition and currying--in
+functions are not merely procedures---they are data. This opens any number of
+doors, including higher-order functions, function composition and currying---in
 other words, the arsenal of techniques, idioms and approaches generally
 referred to as _functional programming_.
 
@@ -36,9 +36,9 @@ function() {
 
 The term 'lambda' comes from the [lambda calculus][lc], where the Greek letter
 λ denotes a function. Lambdas are useful for ad-hoc function definitions, where
-a function is not going to be reused, but they are most important--both in
+a function is not going to be reused, but they are most important---both in
 JavaScript development generally, and in functional programming
-specifically--for creating _closures_.
+specifically---for creating _closures_.
 
   [lc]: http://en.wikipedia.org/wiki/Lambda_calculus
 
@@ -154,7 +154,7 @@ new list as a result, e.g. _g(\[1,2,3\]) → \[2,3,4\]_. More generally,
 > \[f(x<sub>1</sub>), f(x<sub>2</sub>), ..., f(x<sub>n-1</sub>),
 > f(x<sub>n</sub>)\]
 
-`Map` is an example of a higher-order function--a function that takes another
+`Map` is an example of a higher-order function---a function that takes another
 function as an argument.
 
 
@@ -166,10 +166,10 @@ Referential transparency
 Partial application & currying
 ------------------------------
 
-JavaScript functions, as we have seen, are not merely procedures--they are
+JavaScript functions, as we have seen, are not merely procedures---they are
 _data_. Functions can accept other functions as arguments, and they can also
 return functions. Because of this, we can create functions which can be
-_partially applied_--that is, functions which can be passed fewer arguments
+_partially applied_---that is, functions which can be passed fewer arguments
 than they notionally require to produce a result.
 
 By way of example, here's how one would ordinarily write a function to add two
@@ -187,8 +187,8 @@ we can do with our `add` function. For example, let's consider mapping a
 function over a list of numbers. `Add` isn't going to do much good here: if we
 pass it as an argument to `map`, it will just throw an error, because it needs
 two arguments, not the one which each element of the list will provide. This is
-fine as far as it goes--it doesn't make much sense to try to add something to
-nothing--but it's not terribly useful.
+fine as far as it goes---it doesn't make much sense to try to add something to
+nothing---but it's not terribly useful.
 
 If we could somehow provide an initial value to `add`, which would be added to
 each element of the list, that _would_ be useful. In order to do this, we need
@@ -220,8 +220,8 @@ programming is done in the context of pre-existing libraries and applications
 with APIs that can't be changed so radically. However, partial application can
 still be utilised, by taking advantage of a technique known as _currying_.
 
-Named after the logician Haskell Curry--one of the originators of the
-technique--currying allows for the transformation of a function which accepts
+Named after the logician Haskell Curry---one of the originators of the
+technique---currying allows for the transformation of a function which accepts
 _n_ arguments into a partially applicable function that can accept one
 argument at a time. Consider the function _f = λxyz.M_, which has three
 parameters, _x_, _y_ and _z_. By currying, we obtain a new function
