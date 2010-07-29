@@ -66,10 +66,10 @@ keyword, so we say it occurs _free_.
 
 If a function containing a free variable is a closure, then that variable must
 be bound in some outer scope, i.e. in the environment of the function. To make
-`f` into a closure we must bind `y` in `f`'s environment.
+`f` into a closure we must bind `z` in `f`'s environment.
 
 {% highlight javascript %}
-(function() {
+var g = (function() {
     var z = 1,
     
     f = function(x) {
@@ -81,6 +81,10 @@ be bound in some outer scope, i.e. in the environment of the function. To make
     return f;
 })();
 {% endhighlight %}
+
+Here `g` is the name we give to the closure---that is, the returned function
+`f` which now contains a reference to the `z` variable which has been bound in
+its environment.
 
 One important use of closures, outside functional programming strictly defined,
 is memoisation. For example, consider a function `fib` which calculates any
