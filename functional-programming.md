@@ -253,10 +253,11 @@ applicable version.
 
 {% highlight javascript %}
 var curry = function(fn) {
-    var args = Array.slice(arguments, 1);
+    var largs = Array.prototype.slice.call(arguments, 1);
     
     return function() {
-        return fn.apply(this || null, args.concat(Array.slice(arguments, 0)));
+        var args = Array.prototype.slice.call(arguments, 0);
+        return fn.apply(null, largs.concat(args));
     };
 };
 
@@ -274,10 +275,10 @@ advance).
 
 {% highlight javascript %}
 var ncurry = function(fn, n) {
-    var largs = Array.slice(arguments, 2);
+    var largs = Array.prototype.slice.call(arguments, 2);
     
     return function() {
-        var args = largs.concat(Array.slice(arguments, 0));
+        var args = largs.concat(Array.prototype.slice.call(arguments, 0));
         
         if (args.length < n) {
             return ncurry.apply(null, [fn, n].concat(args));
