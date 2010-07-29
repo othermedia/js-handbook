@@ -260,12 +260,17 @@ var curry = function(fn) {
     };
 };
 
-var addp = curry(add);
+var addp  = curry(add),
+    addp1 = addp(1);
+
+addp1(2); // -> 3
 {% endhighlight %}
 
-Note how this version of `curry` can only be applied to functions which take
-two arguments. With a little more work we can generalise it to a function which
-will take _n_ arguments, although we will need to specify _n_ when using it.
+Note how this version of `curry` produces functions which can only be partially
+applied once. With a little more work we can generalise it to a function which
+can be partially applied _n - 1_ times, where _n_ is the number of arguments
+the function to be curried accepts (although we will need to specify _n_ in
+advance).
 
 {% highlight javascript %}
 var ncurry = function(fn, n) {
@@ -275,7 +280,7 @@ var ncurry = function(fn, n) {
         var args = largs.concat(Array.slice(arguments, 0));
         
         if (args.length < n) {
-            return ncurry.apply(this || null, [fn, n].concat(args));
+            return ncurry.apply(null, [fn, n].concat(args));
         } else {
             return fn.apply(null, args);
         }
