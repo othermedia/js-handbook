@@ -152,9 +152,9 @@ list.
 > g = map(f)
 
 We now have a function _g_ which can be passed a list of values, and produces a
-new list as a result, e.g. _g(\[1,2,3\]) → \[2,3,4\]_. More generally,
+new list as a result, e.g. _g(\[1,2,3\]) = \[2,3,4\]_. More generally,
 
-> g(\[x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n-1</sub>, x<sub>n</sub>\]) →
+> g(\[x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n-1</sub>, x<sub>n</sub>\]) =
 > \[f(x<sub>1</sub>), f(x<sub>2</sub>), ..., f(x<sub>n-1</sub>),
 > f(x<sub>n</sub>)\]
 
@@ -216,7 +216,7 @@ applying the function is _another function_---one which, when applied to a
 second number `c`, returns the result of adding `a` to `c`.
 
 > map(addp(a), \[x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>a-1</sub>,
-> x<sub>a</sub>\]) → \[x<sub>1</sub> + a, x<sub>2</sub> + a, ...,
+> x<sub>a</sub>\]) = \[x<sub>1</sub> + a, x<sub>2</sub> + a, ...,
 > x<sub>n-1</sub> + a, x<sub>n</sub> + a\]
 
 This is all well and good when writing one's own functions, but most
@@ -355,15 +355,15 @@ type.
 
 Folds take three arguments: a function, an initial value, and a list. A simple
 example is `sum`, a function that takes a list of numbers and adds them
-together: _sum(\[1,2,3\]) → 6_, and more generally,
+together: _sum(\[1,2,3\]) = 6_, and more generally,
 
-> sum(\[x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n-1</sub>, x<sub>n</sub>\]) →
+> sum(\[x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n-1</sub>, x<sub>n</sub>\]) =
 > x<sub>1</sub> + x<sub>2</sub> + ... + x<sub>n-1</sub> + x<sub>n</sub>
 
 Let's start by defining the function `add` which will take the result of the
 fold so far and add it to the current value.
 
-> add x y = x + y
+> add(x, y) = x + y
 
 We could write this almost as simply in JavaScript.
 
