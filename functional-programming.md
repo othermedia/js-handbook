@@ -375,7 +375,7 @@ being transformed as it goes.
 
 We could reverse this pipeline to better reflect our initial code:
 
-    Math.floor(c) <- c = Math.cos(b) <- b = degreesToRadians(a)
+    Math.floor(c) <- c = Math.cos(b) <- b = degreesToRadians(a) <- a
 
 Now, let's consider how we could represent this in code. That pipeline, with
 its rebinding at every stage, could be a function call, and its argument could
