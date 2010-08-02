@@ -343,6 +343,99 @@ the potential pitfalls involved, see the article
   [currying]: http://extralogical.net/articles/currying-javascript
 
 
+Function composition
+--------------------
+
+Nested function calls are a common sight. Consider the following:
+
+{% highlight javascript %}
+var degreesToRadians = function(a) {
+    return a * Math.PI / 180;
+};
+
+Math.floor(Math.cos(degreesToRadians(x)));
+{% endhighlight %}
+
+The problem with this is that it isn't terribly reusable. If an expression is
+used in several places within a program, being able to abstract that nest of
+function calls is very valuable. Here's the most obvious way to do it:
+
+{% highlight javascript %}
+var fcosd = function(a) {
+    Math.floor(Math.cos(degreesToRadians(a)));
+};
+{% endhighlight %}
+
+However, this doesn't scale very well---you have to write that `function`
+declaration every time, and there are a lot of brackets. Let's think of this
+another way: as a pipeline of functions which the argument passes through,
+being transformed as it goes.
+
+    a -> b = degreesToRadians(a) -> c = Math.cos(b) -> Math.floor(c)
+
+We could reverse this pipeline to better reflect our initial code:
+
+    Math.floor(c) <- c = Math.cos(b) <- b = degreesToRadians(a)
+
+Now, let's consider how we could represent this in code. That pipeline, with
+its rebinding at every stage, could be a function call, and its argument could
+be a list of functions to put into the pipeline. As we are composing the
+functions into a pipeline, let's use the name `compose`.
+
+{% highlight javascript %}
+var fcosd = compose([Math.floor, Math.cos, degreesToRadians]);
+{% endhighlight %}
+
+The utility of this is obvious: we have a simple, generic mechanism for binding
+aliases to pipelines of functions, without having to write scads of boilerplate
+each time. The statement is short and obvious: we are creating a new function
+by composing a bunch of existing functions.
+
+Implementing a `compose` function turns out to be fairly simple, too---it's
+just a function which accepts a list of functions and returns a closure that
+applies each function in turn to its argument.
+
+{% highlight javascript %}
+var naiveCompose = function(pipeline) {
+    return function(x) {
+        var i = pipeline.length, value = x;
+        
+        while (i--) {
+            value = pipeline[i].call(null, value);
+        }
+        
+        return value;
+    };
+};
+{% endhighlight %}
+
+Of course, this isn't entirely satisfactory---what if there are no functions in
+the pipeline, or the 'first' argument in the pipeline (actually the last
+element) accepts multiple arguments? Shouldn't the returned function be able to
+cope with multiple arguments too, even if the rest of them can only accept one?
+Fortunately, these deficiencies are easily remedied.
+
+{% highlight javascript %}
+var compose = function(pipeline) {
+    return function() {
+        var i    = pipeline.length - 1,
+            args = Array.prototype.slice.call(arguments, 0),
+            value;
+        
+        if (i < 0) return args[0];
+        
+        value = pipeline[i].apply(null, args);
+        
+        while (i--) {
+            value = pipeline[i](value);
+        }
+        
+        return value;
+    };
+};
+{% endhighlight %}
+
+
 A brief interlude about the standard library
 --------------------------------------------
 
