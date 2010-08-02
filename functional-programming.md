@@ -409,11 +409,11 @@ var naiveCompose = function(pipeline) {
 };
 {% endhighlight %}
 
-Of course, this isn't entirely satisfactory---what if there are no functions in
-the pipeline, or the 'first' argument in the pipeline (actually the last
-element) accepts multiple arguments? Shouldn't the returned function be able to
-cope with multiple arguments too, even if the rest of them can only accept one?
-Fortunately, these deficiencies are easily remedied.
+Of course, this isn't entirely satisfactory---what if the 'first' function in
+the pipeline (the last element of the list) accepts multiple arguments?
+Shouldn't the returned function be able to cope with multiple arguments too,
+even if the rest of them can only accept one? Fortunately, this deficiency is
+easily remedied.
 
 {% highlight javascript %}
 var compose = function(pipeline) {
