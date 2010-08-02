@@ -177,7 +177,7 @@ expressions:
 'foo' + 'bar'
 
 // This is referentially transparent for all x.
-sin(x)
+Math.sin(x)
 
 // And similarly, so is this.
 function(x) { return x + 5; }
