@@ -165,6 +165,45 @@ function as an argument.
 Referential transparency
 ------------------------
 
+An expression is referentially transparent if it can be replaced by its value
+without changing the program. Here are some referentially transparent
+expressions:
+
+{% highlight javascript %}
+// This can be replaced with the value it evaluates to, the number 10.
+5 + 5
+
+// This can also be replaced by the value it evaluates to, the string 'foobar'.
+'foo' + 'bar'
+
+// This is referentially transparent for all x.
+sin(x)
+
+// And similarly, so is this.
+function(x) { return x + 5; }
+{% endhighlight %}
+
+The last two examples are _pure functions_, that is, they always evaluate to
+the same result value given the same argument values, and do not cause
+side-effects (such as mutating a variable or performing I/O). As Wikipedia puts
+it,
+
+> If all functions involved in the expression are pure functions, then the
+> expression is referentially transparent. Also, some impure functions can be
+> included in the expression if their values are discarded and their side
+> effects are insignificant.
+
+Consider `fib`, the memoised Fibonacci function demonstrated earlier. Despite
+its inclusion of an impure function, `updateTo`, we can consider `fib` to be
+referentially transparent. It always returns the same result value for the same
+argument, and its side-effects (mutating the list of Fibonacci numbers) are
+stored in a closure and thus hidden from the rest of the program.
+
+This point is important to note: despite working in an imperative language
+where mutation is commonplace, we can still create pure functions, with all the
+attendant benefits of reusability and composability---indeed, function
+composition (which we will explorer later) is an excellent demonstration of the
+utility of pure functions.
 
 
 Partial application & currying
