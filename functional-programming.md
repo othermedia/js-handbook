@@ -441,3 +441,71 @@ To understand why functional programming matters, in general, one should begin
 by reading John Hughes' paper, [Why Functional Programming Matters][whyfp].
 
   [whyfp]: http://www.cs.chalmers.se/~rjmh/Papers/whyfp.html
+
+
+Libraries for functional programming in JavaScript
+--------------------------------------------------
+
+A number of libraries are now available which provide functional programming
+primitives in JavaScript. Ojay's [core extensions][ojcext] add a number of
+functional-style methods to array instances: the basic `map`, `filter` and
+`reduce` (the common JavaScript name for a left fold) methods, as well as
+`reduceRight` (right fold), `every` and `some`. Functions are also extended
+with `partial` and `curry` methods.
+
+For a more comprehensive functional programming library, you could use Oliver
+Steele's [Functional][fnl], which has a number of nice features, such as string
+lambdas, which turn strings containing JavaScript expressions into functions
+that return the value of the expression, e.g.
+
+{% highlight javascript %}
+var add1 = 'x -> x + 1'.lambda();
+
+add1(1); // -> 2
+{% endhighlight %}
+
+If you're using jQuery, you might find that Jeremy Ashkenas'
+[Underscore][underscore] a good fit. It provides functional programming support
+but without extending any of the built-in objects, so you don't have to worry
+about namespace clashes. It provides both object-oriented and functional
+styles, so for example, these two lines of code are equivalent:
+
+{% highlight javascript %}
+// Functional style
+_.map([1, 2, 3], function(n) { return n * 2; });
+
+// Object-oriented style
+_([1, 2, 3]).map(function(n) { return n * 2; });
+{% endhighlight %}
+
+Lastly, [Udon][udon] is a new functional programming library with support for
+a wider range of functional idioms, largely drawn from [Haskell][haskell]. Of
+particular interest is the `unfoldr` function, which allows for the
+construction of an array from some seed object.
+
+{% highlight javascript %}
+var randomInts = function(ceil, n) {
+    return Udon.unfoldr(function(i) {
+        return i < 1 ? null : [Math.floor(Math.random() * ceil), i - 1];
+    }, n);
+}
+
+randomInts(5, 4); // -> [5,1,4,5] e.g.
+{% endhighlight %}
+
+It also comes with an `ncurry` function which creates `curry` functions of the
+given arity.
+
+{% highlight javascript %}
+var add   = function(a, b) { return a + b; },
+    curry = ncurry(2),
+    add5  = curry(add)(5);
+
+add5(3); // -> 8
+{% endhighlight %}
+
+  [ojcext]:     http://ojay.othermedia.org/articles/core_extensions.html
+  [fnl]:        http://osteele.com/sources/javascript/functional/
+  [underscore]: http://documentcloud.github.com/underscore/
+  [udon]:       http://github.com/ionfish/udon
+  [haskell]:    http://haskell.org
