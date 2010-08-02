@@ -488,7 +488,7 @@ var randomInts = function(ceil, n) {
     return Udon.unfoldr(function(i) {
         return i < 1 ? null : [Math.floor(Math.random() * ceil), i - 1];
     }, n);
-}
+};
 
 randomInts(5, 4); // -> [5,1,4,5] e.g.
 {% endhighlight %}
