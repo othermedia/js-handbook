@@ -340,7 +340,7 @@ are more than adequate for most purposes, but for a more thorough discussion of
 the potential pitfalls involved, see the article
 ['Approaches to currying in JavaScript'][currying].
 
-  [currying]: http://extralogical.net/articles/currying-javascript
+  [currying]: http://extralogical.net/articles/2010-08-21-currying-javascript
 
 
 Function composition
