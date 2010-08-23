@@ -1,7 +1,7 @@
 ---
 layout:   article
 title:    Performance
-previous: style
+previous: state-management
 next:     functional-programming
 ---
 
