@@ -66,6 +66,10 @@ far shorter, and contains no local variable declarations and no mutation.
 There's less scope for declaring implicit globals, returning the wrong object,
 or accidentally altering the original array.
 
+Most importantly, it allows the reader to focus on the important aspects of
+what the function does: return a new collection where every element is the
+square of the corresponding element in the input collection.
+
 Furthermore, it's a more _general_ function. `ArraySquares` will work for any
 object which stores its elements as numerically-indexed properties and has a
 `length` property. `MapSquares` will work for any collection of numbers with a
